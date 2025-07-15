@@ -1,7 +1,6 @@
-import React from "react";
-import { cocktailLists, mockTailLists } from "../../contants";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { cocktailLists, mockTailLists } from "../../contants";
 
 const Cocktails = () => {
   useGSAP(() => {
@@ -14,15 +13,15 @@ const Cocktails = () => {
       },
     });
 
-    parallaxTimeline.from("#c-right-leaf", {
-      x: 100,
-      y: 100,
-    });
-
-    parallaxTimeline.from("#c-left-leaf", {
-      x: -100,
-      y: -100,
-    });
+    parallaxTimeline
+      .from("#c-left-leaf", {
+        x: -100,
+        y: 100,
+      })
+      .from("#c-right-leaf", {
+        x: 100,
+        y: 100,
+      });
   });
 
   return (
@@ -36,7 +35,7 @@ const Cocktails = () => {
 
       <div className="list">
         <div className="popular">
-          <h2 className="">Most popular cocktails</h2>
+          <h2>Most popular cocktails:</h2>
 
           <ul>
             {cocktailLists.map(({ name, country, detail, price }) => (
@@ -47,14 +46,14 @@ const Cocktails = () => {
                     {country} | {detail}
                   </p>
                 </div>
-                <span className="">- {price}</span>
+                <span>- {price}</span>
               </li>
             ))}
           </ul>
         </div>
 
         <div className="loved">
-          <h2 className="">Most loved Cocktails</h2>
+          <h2>Most loved mocktails:</h2>
 
           <ul>
             {mockTailLists.map(({ name, country, detail, price }) => (
@@ -65,7 +64,7 @@ const Cocktails = () => {
                     {country} | {detail}
                   </p>
                 </div>
-                <span className="">- {price}</span>
+                <span>- {price}</span>
               </li>
             ))}
           </ul>
